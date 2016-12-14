@@ -20,6 +20,28 @@ describe('metalsmith-better-excerpts', function() {
             });
     });
 
+    it('should generate excerpts with two paragraphs', function(done) {
+        new Metalsmith('test/fixtures/basic')
+            .use(markdown())
+            .use(excerpt({
+                stripTags: false,
+                paragraphCount: 2
+            }))
+            .build(function(err, files) {
+                if (err) {
+                    return done(err);
+                }
+                var out = 'Lorem <strong>ipsum dolor</strong> <em>sit</em> amet, consectetur adipisicing elit, sed do eiusmod \n' +
+                          'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \n' +
+                          'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \n' +
+                          'consequat.<br />Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu \n' +
+                          'fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in \n' +
+                          'culpa qui officia deserunt mollit anim id est laborum.'
+                assert.equal(files['index.html'].excerpt, out);
+                done();
+            });
+    });
+
     it('should allow setting excerpts in frontmatter', function(done) {
         new Metalsmith('test/fixtures/frontmatter')
             .use(markdown())
