@@ -31,12 +31,12 @@ describe('metalsmith-better-excerpts', function() {
                 if (err) {
                     return done(err);
                 }
-                var out = 'Lorem <strong>ipsum dolor</strong> <em>sit</em> amet, consectetur adipisicing elit, sed do eiusmod \n' +
+                var out = '<p>Lorem <strong>ipsum dolor</strong> <em>sit</em> amet, consectetur adipisicing elit, sed do eiusmod \n' +
                           'tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \n' +
                           'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \n' +
-                          'consequat.<br />Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu \n' +
+                          'consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu \n' +
                           'fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in \n' +
-                          'culpa qui officia deserunt mollit anim id est laborum.'
+                          'culpa qui officia deserunt mollit anim id est laborum.</p>'
                 assert.equal(files['index.html'].excerpt, out);
                 done();
             });
@@ -65,7 +65,7 @@ describe('metalsmith-better-excerpts', function() {
                 if (err) {
                     return done(err);
                 }
-                assert.equal(files['index.html'].excerpt, 'Lorem <strong>ipsum dolor</strong> <em>sit</em> amet, consectetur adipisicing elit, sed do eiusmod \ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \nconsequat.');
+                assert.equal(files['index.html'].excerpt, '<p>Lorem <strong>ipsum dolor</strong> <em>sit</em> amet, consectetur adipisicing elit, sed do eiusmod \ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo \nconsequat.</p>');
                 done();
             });
     });
